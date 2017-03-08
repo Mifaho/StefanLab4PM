@@ -21,7 +21,8 @@ Email::Email(std::string who, std::string date, std::string subject):
 who(who), date(date), subject(subject) {
 }
 
-Email::Email(const Email& orig) {
+Email::Email(const Email& rhs):who(rhs.who), date(rhs.date), subject(rhs.subject) {
+    
 }
 
 std::ostream& operator<<(std::ostream& output, const Email& email) {

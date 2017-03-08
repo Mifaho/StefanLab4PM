@@ -14,6 +14,8 @@
 #ifndef EMAIL_H
 #define EMAIL_H
 #include <string>
+#include <vector>
+#include <algorithm>
 
 class Email {
 public:
@@ -58,7 +60,7 @@ public:
     };
     Email();
     Email(std::string who, std::string date, std::string subject);
-    Email(const Email& orig);
+    Email(const Email& rhs);
     friend std::ostream& operator<<(std::ostream& output, const Email& email);
     virtual ~Email();
 private:

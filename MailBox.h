@@ -13,12 +13,34 @@
 
 #ifndef MAILBOX_H
 #define MAILBOX_H
-#include <vector>
+#include "Email.h"
 
 class MailBox {
 public:
+    void SortWho() {
+        Email::CompWhoDateSubject comp;
+        std::sort(this->emails.begin(), this->emails.end(), comp);
+    };
+
+    void SortDate(/*const MailBox& mailbox*/) {
+        Email::CompDateWhoSubject comp;
+        std::sort(this->emails.begin(), this->emails.end(), comp);
+    };
+
+    void SortSubject() {
+        Email::CompSubjectWhoDate comp;
+        std::sort(this->emails.begin(), this->emails.end(), comp);
+    };
     MailBox();
-    MailBox(const MailBox& orig);
+    MailBox(size_t size);
+    MailBox(std::vector<Email> emails);
+    Email* begin();
+    Email* end();
+    void addEmailAtEnd(Email email);
+    Email getEmailAtIndex(Email email, size_t index);
+    Email setEmailAtIndex(Email email, size_t index);
+    Email removeEmailAtEnd(Email email);
+    void insertElementAtIndex(Email email, size_t index);
     virtual ~MailBox();
 private:
     std::vector<Email> emails;
